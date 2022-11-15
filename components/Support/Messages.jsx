@@ -26,7 +26,7 @@ const Messages = ({ socket, isTyping, messages, setMessages }) => {
   useEffect(() => {
     scrollToBottom();
     console.log("working");
-  }, [messages]);
+  }, [messages.length]);
 
   const fetch = async () => {
     try {

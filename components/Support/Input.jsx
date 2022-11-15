@@ -63,8 +63,7 @@ const Input = ({ socket, messages, setMessages, setIsTyping, isTyping }) => {
 
       dispatch(setFetchAgain());
       const adminMsg = [
-        "Thanks for texting us ❤️",
-        "We will get back to you soon",
+        "Thanks for texting us ❤️ .We will get back to you soon",
       ];
 
       //generate messaage by admin
