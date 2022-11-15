@@ -1,0 +1,49 @@
+.wrapper {
+  height: 10%;
+  padding: 10px;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  align-items: center;
+  position: relative;
+}
+
+.wrapper .left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 93%;
+}
+
+.left__flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: scroll;
+  /* max-width: 75%; */
+}
+
+.wrapper .left::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.wrapper .right {
+  border: 2px solid red;
+  color: red;
+  background-color: rgb(255, 0, 0, 0.2);
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.notification {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  max-height: 50vh;
+  z-index: 3;
+  border-radius: 30px;
+}

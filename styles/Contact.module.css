@@ -1,0 +1,80 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 7878;
+}
+
+.wrapper::after {
+  content: "";
+  background-color: rgb(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+
+.wrapper h1,
+.wrapper h2 {
+  z-index: 555;
+}
+
+.wrapper .container {
+  z-index: 888444888;
+}
+.wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 300px;
+  z-index: 555;
+}
+
+.wrapper form input,
+.wrapper form textarea {
+  padding: 7px;
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  z-index: 555;
+  color: white;
+}
+
+.wrapper form input:hover,
+.wrapper form textarea:hover {
+  border: 1px solid var(--secondary);
+}
+
+.wrapper form textarea {
+  height: 20vh;
+  resize: none;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  /* width: 100%; */
+}
+
+.btn__cancel {
+  padding: 5px 10px;
+  background: rgb(55, 38, 99);
+  max-width: 190px;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: rgb(255, 0, 0, 0.2);
+  color: red;
+}
+
+.btn__cancel:hover {
+  background: rgb(255, 0, 0, 0.3);
+}
+

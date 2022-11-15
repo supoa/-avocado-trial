@@ -1,0 +1,63 @@
+.wrapper {
+  text-align: center;
+  padding: 15px;
+}
+
+.image__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 45px 0;
+  flex-wrap: wrap;
+}
+
+.image__container img {
+}
+
+.image__wrapper {
+  border-radius: 15px;
+  border: 1px solid gold;
+  box-shadow: 3px 3px 3px 3px rgb(71, 62, 2);
+  overflow: hidden;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  min-height: 320px;
+  min-width: 220px;
+  justify-content: center;
+}
+
+.price {
+  font-size: 150%;
+  font-weight: bold;
+  color: var(--secondary);
+  border-bottom: 1px solid gold;
+}
+
+.benifit,
+.pay,
+.duration,
+.reward,
+.price {
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid gold;
+  min-width: 180px;
+}
+
+.image__wrapper:hover {
+  transform: scale(1.01);
+  font-weight: bold;
+}
+
+@media (max-width: 570px) {
+  .image__container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    justify-content: flex-start;
+  }
+}

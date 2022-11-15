@@ -1,0 +1,97 @@
+.wrapper {
+  /* padding: 5px; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px 20px 5px;
+
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 80%;
+  min-width: 150px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50px;
+}
+
+.name {
+  padding-bottom: 5px;
+}
+
+.wrapper img {
+  border-radius: 50%;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.active__icon {
+  border: "1px solid green";
+  background: green;
+
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.picture {
+  border: 1px dotted lightgray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.request {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: red;
+  border-radius: 50%;
+}
+
+.new__message {
+  color: red;
+  margin-left: 5px;
+}
+
+.typing {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  background: var(--secondary);
+  border-radius: 20px;
+  /* margin-bottom: 15px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing__dot {
+  float: left;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background: blue;
+  border-radius: 50%;
+  opacity: 0;
+  animation: loadingFade 0.8s infinite;
+}
+
+.typing__dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+@keyframes loadingFade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}

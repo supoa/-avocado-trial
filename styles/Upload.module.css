@@ -1,0 +1,37 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 82085032850328;
+}
+
+.wrapper {
+  background-color: rgb(0, 0, 0, 0.6);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper .left {
+  max-width: 60%;
+}
+
+.wrapper input {
+  border: 1px solid var(--primary);
+  padding: 10px;
+  margin: 10px 0;
+  background: none;
+  /* color: black; */
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

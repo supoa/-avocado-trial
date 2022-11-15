@@ -1,0 +1,56 @@
+.wrapper {
+  background: lightgoldenrodyellow;
+  min-width: 200px;
+  min-height: 60vh;
+  max-width: 250px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.wrapper .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.wrapper .notifications {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.wrapper .notification {
+  padding: 7px 5px;
+  cursor: pointer;
+  /* border-top: 1px solid black; */
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+.wrapper .notification:hover {
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.notification img {
+  border-radius: 50%;
+}
+
+.notification .picture {
+  padding-top: 5px;
+}
+
+.notification .name {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.notification span {
+  font-size: 60%;
+}
+
+.close__icon {
+  cursor: pointer;
+  font-weight: bolder;
+}
