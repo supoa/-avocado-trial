@@ -27,7 +27,7 @@ const Input = ({ socket, messages, setMessages, setIsTyping, isTyping }) => {
         ...prev,
         {
           text: textToSend,
-          sender: userInfo._id,
+          sender: userInfo,
           chat: currentChat._id,
         },
       ]);
