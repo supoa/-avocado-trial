@@ -17,9 +17,16 @@ const Messages = ({ socket, isTyping, messages, setMessages }) => {
   const messagesEndRef = useRef(null);
   const dispatch = useDispatch();
 
+  console.log({ isTyping });
+
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    scrollToBottom();
+    console.log("working");
+  }, [messages]);
 
   const fetch = async () => {
     try {
@@ -35,7 +42,6 @@ const Messages = ({ socket, isTyping, messages, setMessages }) => {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     fetch();

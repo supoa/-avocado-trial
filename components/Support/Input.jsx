@@ -62,13 +62,23 @@ const Input = ({ socket, messages, setMessages, setIsTyping, isTyping }) => {
       console.log({ data });
 
       dispatch(setFetchAgain());
-      const adminMsg = "Thanks for texting us ❤️.We will get back to you soon";
-
-      console.log({ messages });
+      const adminMsg = [
+        "Thanks for texting us ❤️",
+        "We will get back to you soon",
+      ];
 
       //generate messaage by admin
       if (messages.length < 1 && !data.sender.isAdmin) {
-        sendMessageByAdmin(adminMsg);
+        adminMsg.forEach((item) => {
+          setIsTyping({
+            sender: currentChat.users.find((item) => item._id != userInfo._id)
+              ._id,
+            chat: currentChat._id,
+            reciever: userInfo._id,
+          });
+
+          sendMessageByAdmin(item);
+        });
       }
     } catch (error) {
       console.log(error);
@@ -125,14 +135,7 @@ const Input = ({ socket, messages, setMessages, setIsTyping, isTyping }) => {
         }
       );
 
-      // setText("");
-      // socket.emit("stop typing", {
-      //   reciever: currentChat.users.find((item) => item._id != userInfo._id)
-      //     ._id,
-      //   chat: currentChat._id,
-      //   sender: userInfo._id,
-      // });
-      // setTyping(false);
+      setIsTyping(null);
 
       socket.emit("new message", {
         ...data,

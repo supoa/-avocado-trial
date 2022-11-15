@@ -70,7 +70,7 @@ const ChatBox = () => {
   };
 
   useEffect(() => {
-    fetchLatestMessage();
+    userInfo.isAdmin && fetchLatestMessage();
   }, [fetchAgain]);
 
   // useEffect(() => {
