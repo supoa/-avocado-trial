@@ -5,7 +5,7 @@ import ProfilePost from "../../components/ProfiePost";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import UserTree from "../../components/UserTree";
+import UserTree from "../../components/utils/UserTree";
 import Breadth from "../../components/utils/Breadth";
 
 const Profile = () => {

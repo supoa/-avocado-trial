@@ -1,9 +1,8 @@
-import { current } from "@reduxjs/toolkit";
 import Image from "next/image";
 import React from "react";
-import styles from "../styles/UserTree.module.css";
+import styles from "../../styles/UserTree.module.css";
 import { useState } from "react";
-import UserModal from "./utils/UserModal";
+import UserModal from "./../UserModal";
 
 const UserTree = ({ user }) => {
   const [modalOpen, setModalOpen] = useState(false);
