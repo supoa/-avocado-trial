@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "../../styles/UserModal.module.css";
-import Image from "next/Image";
+import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { setFetchTeam } from "../../redux/userSlice";
 import { getLevels } from "../../utils/test/test";
+
 const UserModal = ({ user, setCurrentUser }) => {
   const dispatch = useDispatch();
   const router = useRouter();
