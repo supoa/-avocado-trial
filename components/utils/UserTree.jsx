@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import styles from "../../styles/UserTree.module.css";
 import { useState } from "react";
-import UserModal from "./../UserModal";
+import UserModal from "./UserModal";
 
 const UserTree = ({ user }) => {
   const [modalOpen, setModalOpen] = useState(false);
