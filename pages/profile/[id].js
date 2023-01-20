@@ -5,9 +5,7 @@ import ProfilePost from "../../components/ProfiePost";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Tree from "../../components/utils/Tree";
 import UserTree from "../../components/UserTree";
-import OrgChart from "../../components/OrgChart";
 import Breadth from "../../components/utils/Breadth";
 
 // const user = {

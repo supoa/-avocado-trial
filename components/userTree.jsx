@@ -550,9 +550,7 @@ const UserTree = ({ user }) => {
         </ul>
       </div>
       {currentUser && (
-        // <div className={styles.user__details}>
         <UserModal user={currentUser} setCurrentUser={setCurrentUser} />
-        // </div>
       )}
     </div>
   );
