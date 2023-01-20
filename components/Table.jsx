@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/Table.module.css";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import Copy from "./utils/Copy";
 
 const Table = ({ users }) => {
   const [query, setQuery] = useState("");
@@ -34,7 +35,9 @@ const Table = ({ users }) => {
             }}
           >
             <th>User</th>
+            <th>ID</th>
             <th>Email</th>
+            <th>Team Member</th>
             <th>Rank</th>
             <th>NID</th>
             <th>JOIN</th>
@@ -81,7 +84,13 @@ const Table = ({ users }) => {
                     {user.name}
                   </span>
                 </td>
+                <td style={{ fontSize: "80%", minWidth: "120px%" }}>
+                  <span style={{ display: "flex", gap: "10PX" }}>
+                    <Copy text={user._id} /> {user._id}
+                  </span>
+                </td>
                 <td>{user.email}</td>
+                <td>{user.teamMembers.length}</td>
                 <td>{user.rank}</td>
                 <td>{user.Nid}</td>
                 <td>{user.Join}</td>

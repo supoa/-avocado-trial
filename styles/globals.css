@@ -16,6 +16,8 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 li {
@@ -82,4 +84,10 @@ btn {
 
 btn:hover {
   background: var(--secondary);
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 90%;
+  }
 }

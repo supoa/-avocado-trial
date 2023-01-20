@@ -10,6 +10,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CircularProgress from "@mui/material/CircularProgress";
 import { motion } from "framer-motion";
 import Moment from "react-moment";
+import Copy from "./utils/Copy";
+import Breadth from "./utils/breadth";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import UpdateTeam from "./UpdateTeam";
 
 const ProfileInfo = ({ userInfo }) => {
   const [open, setOpen] = useState(false);
@@ -18,6 +22,7 @@ const ProfileInfo = ({ userInfo }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [fromAdmin, setFromAdmin] = useState(false);
+  const [updatingTeam, setUpdatingTeam] = useState(false);
 
   const fetchProfileInfo = async () => {
     try {
@@ -91,6 +96,12 @@ const ProfileInfo = ({ userInfo }) => {
           </motion.div>
           <div className={styles.profile__name}>{profileData.name}</div>
           <div className={styles.profile__email}> {profileData.email}</div>
+          <div className={styles.profile__id}>
+            <span>{profileData._id}</span>
+            <span>
+              <Copy text={profileData._id} />
+            </span>
+          </div>
           <btn
             onClick={() => {
               setOpen(true);
@@ -99,7 +110,7 @@ const ProfileInfo = ({ userInfo }) => {
           >
             Update Profile
           </btn>
-          
+
           {userInfo.isAdmin && (
             <btn
               onClick={() => {
@@ -111,6 +122,15 @@ const ProfileInfo = ({ userInfo }) => {
             </btn>
           )}
 
+          {userInfo.isAdmin && (
+            <btn
+              onClick={() => {
+                setUpdatingTeam(true);
+              }}
+            >
+              <GroupAddIcon />{" "}
+            </btn>
+          )}
           {userInfo?._id == router.query.id && (
             <div
               className={styles.profile__btn}
@@ -131,6 +151,7 @@ const ProfileInfo = ({ userInfo }) => {
               )}
             </div>
           )}
+
           <div
             className={styles.box}
             style={{
@@ -190,6 +211,18 @@ const ProfileInfo = ({ userInfo }) => {
                   profileData={profileData}
                   setProfileData={setProfileData}
                   fromAdmin={fromAdmin}
+                />
+              }
+            </div>
+          )}
+          {updatingTeam && (
+            <div className={styles.profile__update}>
+              {
+                <UpdateTeam
+                  profileData={profileData}
+                  setProfileData={setProfileData}
+                  userInfo={userInfo}
+                  setUpdatingTeam={setUpdatingTeam}
                 />
               }
             </div>

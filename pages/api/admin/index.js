@@ -8,6 +8,7 @@ import { signToken, isAdmin, isAuth } from "../../../utils/auth";
 const handler = nc();
 
 // get all the users by admin
+
 handler.use(isAuth, isAdmin);
 
 handler.get(async (req, res) => {

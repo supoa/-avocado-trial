@@ -20,8 +20,6 @@ const Login = () => {
   const [pic, setPic] = useState("");
   const [read, setRead] = useState(false);
   const [agreed, setAgreed] = useState(false);
-
-  // const [payMentMethod, setPaymentMethod] = useState("");
   const [country, setCountry] = useState("");
   const [Nid, setNid] = useState("");
   const [fil, setFil] = useState("");
@@ -32,6 +30,7 @@ const Login = () => {
   const [NNid, setNNid] = useState("");
   const [NNID, setNNID] = useState("");
   const [NEmail, setNEmail] = useState("");
+  const [reference, setReference] = useState("");
 
   const userInfo = useSelector((state) => state.user.userInfo);
   const terms = useSelector((state) => state.terms.terms);
@@ -78,15 +77,17 @@ const Login = () => {
         bnb,
         NNID,
         NEmail,
+        reference,
       });
-      console.log(data);
+
+      console.log({ data });
+
       dispatch(login(data));
       setLoading(false);
       router.push(`/profile/${data._id}`);
-      console.log(data);
     } catch (error) {
       setLoading(false);
-      setError(error.message);
+      setError(error.response.data.error);
       console.log(error);
     }
   };
@@ -124,6 +125,11 @@ const Login = () => {
             type="text"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Referal Code"
+            onChange={(e) => setReference(e.target.value)}
           />
           <input
             type="text"

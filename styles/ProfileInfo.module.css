@@ -41,6 +41,17 @@
   font-size: 115%;
 }
 
+.profile__id {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile__id span {
+  font-size: 80%;
+  color: lightgray;
+}
+
 .profile__btn {
   padding: 5px 10px;
   background: rgb(55, 38, 99);
