@@ -5,7 +5,7 @@ import styles from "../styles/UserTree.module.css";
 import { useState } from "react";
 import UserModal from "./utils/UserModal";
 
-const userTree = ({ user }) => {
+const UserTree = ({ user }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
 
@@ -558,4 +558,4 @@ const userTree = ({ user }) => {
   );
 };
 
-export default userTree;
+export default UserTree;

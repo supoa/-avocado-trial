@@ -6,9 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Tree from "../../components/utils/Tree";
-import UserTree from "../../components/userTree";
+import UserTree from "../../components/UserTree";
 import OrgChart from "../../components/OrgChart";
-import Breadth from "../../components/utils/breadth";
+import Breadth from "../../components/utils/Breadth";
 
 // const user = {
 //   _id: "63394733e01b1911c0dbb1ca",
