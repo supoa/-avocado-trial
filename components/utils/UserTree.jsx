@@ -1,16 +1,27 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../styles/UserTree.module.css";
 import { useState } from "react";
 import UserModal from "./UserModal";
+import { maxWidth } from "../../utils/test/test";
 
 const UserTree = ({ user }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className={styles.wrapper}>
-      <h3>You With Your Team Memeber</h3>
+      {/* <h3>You With Your Team Memeber</h3>
+      <h4>current Width {width}</h4> */}
       <div className={styles.tree}>
         <ul>
           {user && (

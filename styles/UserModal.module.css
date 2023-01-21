@@ -28,9 +28,14 @@
 
 .user__modal .email,
 .country,
-.remove {
+.remove,
+.id {
   font-size: 90%;
   color: rgb(42, 41, 41);
+}
+
+.user__modal .id {
+  font-size: 60%;
 }
 
 .user__bio {

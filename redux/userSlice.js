@@ -10,6 +10,7 @@ export const userSlice = createSlice({
 
     teamMember: [],
     fetchTeam: true,
+    profileInfo: {},
   },
   reducers: {
     login: (state, action) => {
@@ -27,10 +28,14 @@ export const userSlice = createSlice({
     setFetchTeam: (state) => {
       state.fetchTeam = !state.fetchTeam;
     },
+    setProfileInfo: (state, action) => {
+      state.profileInfo = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { login, logout, setTeamMember, setFetchTeam } = userSlice.actions;
+export const { login, logout, setTeamMember, setFetchTeam, setProfileInfo } =
+  userSlice.actions;
 
 export default userSlice.reducer;

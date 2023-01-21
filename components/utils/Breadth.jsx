@@ -54,6 +54,7 @@ const Breadth = () => {
   useEffect(() => {
     fetch();
   }, [fetchTeam, router.query.id]);
+
   return (
     <div className={styles.wrapper}>
       <h3>Team Member {teamMember.rowUser?.length}</h3>
@@ -78,6 +79,7 @@ const Breadth = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Breadth;

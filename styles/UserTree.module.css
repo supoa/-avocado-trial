@@ -3,15 +3,23 @@
   align-items: center;
   justify-content: center; */
   /* min-height: 50vh; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
   padding: 50px 0;
+  overflow: scroll;
+  overflow-x: scroll;
+  border: 1px solid gold;
 }
+
 .tree {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   min-height: 30vh;
   /* min-width: 400px; */
+  min-width: 100%;
 }
 
 .tree ul {

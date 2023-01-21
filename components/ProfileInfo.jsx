@@ -4,7 +4,7 @@ import Image from "next/image";
 import UpdateProfile from "./UpdateProfile";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { logout } from "../redux/userSlice";
+import { logout, setProfileInfo } from "../redux/userSlice";
 import { useRouter } from "next/router";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -32,6 +32,7 @@ const ProfileInfo = ({ userInfo }) => {
       });
       console.log(data);
       setProfileData(data);
+      dispatch(setProfileInfo(data));
     } catch (error) {
       console.log(error);
     }
@@ -95,12 +96,16 @@ const ProfileInfo = ({ userInfo }) => {
           </motion.div>
           <div className={styles.profile__name}>{profileData.name}</div>
           <div className={styles.profile__email}> {profileData.email}</div>
-          <div className={styles.profile__id}>
-            <span>{profileData._id}</span>
-            <span>
-              <Copy text={profileData._id} />
-            </span>
-          </div>
+
+          {new Date(profileData.createdAt) >
+            new Date("2023-01-20T15:44:00.024Z") && (
+            <div className={styles.profile__id}>
+              <span>{profileData._id}</span>
+              <span>
+                <Copy text={profileData._id} />
+              </span>
+            </div>
+          )}
           <btn
             onClick={() => {
               setOpen(true);
@@ -110,7 +115,7 @@ const ProfileInfo = ({ userInfo }) => {
             Update Profile
           </btn>
 
-          {userInfo.isAdmin && (
+          {userInfo?.isAdmin && (
             <btn
               onClick={() => {
                 setOpen(true);
@@ -121,15 +126,17 @@ const ProfileInfo = ({ userInfo }) => {
             </btn>
           )}
 
-          {userInfo.isAdmin && (
-            <btn
-              onClick={() => {
-                setUpdatingTeam(true);
-              }}
-            >
-              <GroupAddIcon />{" "}
-            </btn>
-          )}
+          {userInfo?.isAdmin &&
+            new Date(profileData.createdAt) >
+              new Date("2023-01-20T15:44:00.024Z") && (
+              <btn
+                onClick={() => {
+                  setUpdatingTeam(true);
+                }}
+              >
+                <GroupAddIcon />{" "}
+              </btn>
+            )}
           {userInfo?._id == router.query.id && (
             <div
               className={styles.profile__btn}
@@ -163,13 +170,13 @@ const ProfileInfo = ({ userInfo }) => {
             <div className={styles.item}>
               Joined : <span>{profileData.Join}</span>{" "}
             </div>
-            {/* <div className={styles.item}>
+            <div className={styles.item}>
               Joined :
               <div style={{ color: "white", display: "inline" }}>
                 {" "}
                 <Moment format="D MMM YYYY">{profileData.createdAt}</Moment>
               </div>
-            </div> */}
+            </div>
             <div className={styles.item}>
               Rank : <span>{profileData.rank}</span>
             </div>

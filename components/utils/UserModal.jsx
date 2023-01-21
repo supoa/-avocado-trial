@@ -49,6 +49,7 @@ const UserModal = ({ user, setCurrentUser }) => {
       <div className={styles.user__bio}>
         {" "}
         <div className={styles.name}>{user.name}</div>
+        <div className={styles.id}>{user._id}</div>
         <div className={styles.email}>{user.email}</div>
         <div className={styles.country}>{user.country}</div>
         <div className={styles.cancel} onClick={() => setCurrentUser(null)}>

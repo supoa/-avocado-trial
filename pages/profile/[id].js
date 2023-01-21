@@ -10,9 +10,9 @@ import Breadth from "../../components/utils/Breadth";
 
 const Profile = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
+  const profileInfo = useSelector((state) => state.user.profileInfo);
   const router = useRouter();
   const teamMember = useSelector((state) => state.user.teamMember);
-
 
   useEffect(() => {
     if (!userInfo) {
@@ -26,8 +26,10 @@ const Profile = () => {
         <title>Dashboard</title>
       </Head>
       <ProfileInfo userInfo={userInfo} />
-      {userInfo?.isAdmin && <Breadth user={teamMember} />}
-      {userInfo?.isAdmin && (
+      {new Date(profileInfo.createdAt) >
+        new Date("2023-01-20T15:44:00.024Z") && <Breadth user={teamMember} />}
+      {new Date(profileInfo.createdAt) >
+        new Date("2023-01-20T15:44:00.024Z") && (
         <>
           <UserTree user={teamMember.user} />
         </>
