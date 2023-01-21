@@ -26,14 +26,18 @@ const Profile = () => {
         <title>Dashboard</title>
       </Head>
       <ProfileInfo userInfo={userInfo} />
-      {new Date(profileInfo.createdAt) >
-        new Date("2023-01-20T15:44:00.024Z") && <Breadth user={teamMember} />}
-      {new Date(profileInfo.createdAt) >
-        new Date("2023-01-20T15:44:00.024Z") && (
-        <>
-          <UserTree user={teamMember.user} />
-        </>
-      )}
+      {userInfo?.isAdmin ||
+        (new Date(profileInfo.createdAt) >
+          new Date("2023-01-20T15:44:00.024Z") && (
+          <Breadth user={teamMember} />
+        ))}
+      {userInfo?.isAdmin ||
+        (new Date(profileInfo.createdAt) >
+          new Date("2023-01-20T15:44:00.024Z") && (
+          <>
+            <UserTree user={teamMember.user} />
+          </>
+        ))}
       <ProfilePost userInfo={userInfo} />
     </div>
   );
