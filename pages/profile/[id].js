@@ -32,7 +32,6 @@ const Profile = () => {
       {(new Date(profileInfo.createdAt) >
         new Date("2023-01-20T15:44:00.024Z") ||
         userInfo?.isAdmin) && <TeamMember user={teamMember.user} />}
-
       <ProfilePost userInfo={userInfo} />
     </div>
   );

@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 const pass = "nasybqffosnfblry";
 const from = "avocadoofficial634@gmail.com";
 
+
 const mailOptionsForNewUser = (user) => {
   return {
     from: from,
