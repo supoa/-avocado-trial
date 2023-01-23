@@ -1,0 +1,22 @@
+.container .generation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid lightgrey;
+  gap: 5px;
+  padding: 5px;
+  overflow-x: scroll;
+  font-size: 90%;
+}
+
+.user__item {
+  border-radius: 50px;
+  border: 1px solid orange;
+  padding: 3px;
+  padding-right: 7px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 150px;
+}

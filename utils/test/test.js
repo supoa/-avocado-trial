@@ -25,14 +25,12 @@ function getLevels(user) {
         levels[curr.level] = [];
       }
       levels[curr.level].push(curr.node);
-      for (let j = 0; j < curr.node.teamMembers?.length; j++) {
+      for (let j = 0; j < curr.node?.teamMembers?.length; j++) {
         queue.push({ node: curr.node.teamMembers[j], level: curr.level + 1 });
       }
     }
   }
   return levels;
 }
-
-
 
 export { getLevels, maxWidth };

@@ -7,10 +7,10 @@
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 50px 0;
-  overflow: scroll;
+  /* padding: 50px 0; */
+  /* overflow: scroll; */
   overflow-x: scroll;
-  border: 1px solid gold;
+  width: 100%;
 }
 
 .tree {
@@ -164,5 +164,3 @@ right connector from last child*/
   border-color: #94a0b4;
   border: 3px solid gold;
 }
-/*Thats all. I hope you enjoyed it.
-Thanks :)*/

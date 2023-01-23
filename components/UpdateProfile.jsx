@@ -130,6 +130,12 @@ const UpateProfile = ({
               placeholder="Rank"
               onChange={(e) => setProfile({ ...profile, rank: e.target.value })}
             />
+
+            <input
+              type="text"
+              placeholder="Level"
+              onChange={(e) => setProfile({ ...profile, level: e.target.value })}
+            />
             <input
               type="text"
               placeholder="Country"

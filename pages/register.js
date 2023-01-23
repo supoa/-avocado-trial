@@ -128,7 +128,7 @@ const Login = () => {
           />
           <input
             type="text"
-            placeholder="Referal Code"
+            placeholder="Referal Code (optional)"
             onChange={(e) => setReference(e.target.value)}
           />
           <input
@@ -183,6 +183,7 @@ const Login = () => {
                   className={styles.link}
                   onClick={() => terms?.content && router.push(terms.content)}
                 >
+                  {" "}
                   Terms and Condition
                 </span>
               </div>
@@ -214,8 +215,11 @@ const Login = () => {
             )}
 
             <div className={styles.link}>
-              Already have Account ?
-              <span onClick={() => router.push("/login")}>Login</span>
+              Already have Account ? 
+              <span onClick={() => router.push("/login")}>
+                {""}
+                Login
+              </span>
             </div>
           </div>
         </form>

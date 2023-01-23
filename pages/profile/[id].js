@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import UserTree from "../../components/utils/UserTree";
 import Breadth from "../../components/utils/Breadth";
+import UserVerticalTree from "../../components/utils/UserVerticalTree";
+import TeamMember from "../../components/Team/TeamMember";
 
 const Profile = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
@@ -26,18 +28,11 @@ const Profile = () => {
         <title>Dashboard</title>
       </Head>
       <ProfileInfo userInfo={userInfo} />
-      {userInfo?.isAdmin ||
-        (new Date(profileInfo.createdAt) >
-          new Date("2023-01-20T15:44:00.024Z") && (
-          <Breadth user={teamMember} />
-        ))}
-      {userInfo?.isAdmin ||
-        (new Date(profileInfo.createdAt) >
-          new Date("2023-01-20T15:44:00.024Z") && (
-          <>
-            <UserTree user={teamMember.user} />
-          </>
-        ))}
+
+      {(new Date(profileInfo.createdAt) >
+        new Date("2023-01-20T15:44:00.024Z") ||
+        userInfo?.isAdmin) && <TeamMember user={teamMember.user} />}
+
       <ProfilePost userInfo={userInfo} />
     </div>
   );

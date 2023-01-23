@@ -1,0 +1,29 @@
+.wrapper {
+  padding: 50px 15px;
+  border: 1px solid var(--primary);
+  min-height: 80vh;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+.wrapper h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background-color: var(--primary);
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+.flex .item {
+  background-color: rgb(93, 89, 89);
+  height: 100%;
+  padding: 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+}

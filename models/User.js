@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
     rank: { type: String },
+    level: { type: String },
     Nid: { type: String },
     Join: { type: String },
     picture: {

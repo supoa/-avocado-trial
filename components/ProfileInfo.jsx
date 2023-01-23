@@ -184,6 +184,9 @@ const ProfileInfo = ({ userInfo }) => {
               Country : <span>{profileData.country}</span>
             </div>
             <div className={styles.item}>
+              level : <span>{profileData.level}</span>
+            </div>
+            <div className={styles.item}>
               Package : <span>{profileData.package}</span>
             </div>
             <div className={styles.item}>

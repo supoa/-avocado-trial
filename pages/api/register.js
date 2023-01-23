@@ -6,19 +6,12 @@ import nodemailer from "nodemailer";
 
 import db from "../../utils/db";
 import { signToken } from "../../utils/auth";
-// import {
-//   mailOptionsForNewUser,
-//   mailOptionForReferance,
-//   mailOptionForAdmin,
-// } from "../../utils/mail";
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "sohanur25800@gmail.com",
-    pass: "wydqyslatehelgeq",
-  },
-});
+import {
+  mailOptionsForNewUser,
+  mailOptionForReferance,
+  mailOptionForAdmin,
+  transporter,
+} from "../../utils/mail";
 
 const handler = nc();
 handler.post(async (req, res) => {
@@ -59,41 +52,41 @@ handler.post(async (req, res) => {
       await existRef.save();
       // send mail to the referance
 
-      // transporter.sendMail(
-      //   mailOptionForReferance(existRef, user),
-      //   function (error, info) {
-      //     if (error) {
-      //       console.log(error);
-      //     } else {
-      //       console.log("Email sent  : " + info.response);
-      //     }
-      //   }
-      // );
+      transporter.sendMail(
+        mailOptionForReferance(existRef, user),
+        function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent  : " + info.response);
+          }
+        }
+      );
     }
 
     // send email to newly signed Up user
-    // transporter.sendMail(mailOptionsForNewUser(user), function (error, info) {
-    //   if (error) {
-    //     console.log(error);
-    //   } else {
-    //     console.log("Email sent: " + info.response);
-    //   }
-    // });
+    transporter.sendMail(mailOptionsForNewUser(user), function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
 
     // fecth admin and send mail to the admin user
-    // const admin = await User.findOne({ isAdmin: true });
-    // if (admin) {
-    //   transporter.sendMail(
-    //     mailOptionForAdmin(admin, user),
-    //     function (error, info) {
-    //       if (error) {
-    //         console.log(error);
-    //       } else {
-    //         console.log("Email sent: " + info.response);
-    //       }
-    //     }
-    //   );
-    // }
+    const admin = await User.findOne({ isAdmin: true });
+    if (admin) {
+      transporter.sendMail(
+        mailOptionForAdmin(admin, user),
+        function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        }
+      );
+    }
 
     await db.disconnect();
 

@@ -1,0 +1,90 @@
+.tree ul {
+  /* margin: 5px; */
+  /* padding: 5px; */
+  margin-left: 35px;
+  line-height: 2.2em;
+}
+
+.tree summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.tree summary::marker {
+  display: none;
+}
+
+.tree summary::-webkit-details-marker {
+  display: none;
+}
+
+.tree ul li {
+  position: relative;
+  /* outline: 1px solid green; */
+  /* margin: 5px; */
+  padding: 7px 0;
+}
+
+.tree ul li::before {
+  position: absolute;
+  left: -10px;
+  top: 0px;
+  border-left: 2px solid rgba(114, 114, 52, 0.5);
+  border-bottom: 2px solid rgba(221, 221, 93, 0.5);
+  /* border-radius: 5px; */
+  content: "";
+  width: 8px;
+  height: 1em;
+}
+
+.tree ul li:after {
+  position: absolute;
+  left: -10px;
+  bottom: 0px;
+  border-left: 2px solid rgba(78, 78, 56, 0.5);
+  content: "";
+  width: 8px;
+  height: 1em;
+  height: 100%;
+}
+
+.tree ul li:last-child::after {
+  display: none;
+}
+
+.first > li:after,
+.first > li:before {
+  display: none;
+}
+
+/* .tree ul summary::before {
+  position: absolute;
+  left: -1.25em;
+  top: 0.55em;
+  content: "+";
+  background: orange;
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50em;
+  z-index: 5;
+  text-align: center;
+  line-height: 0.8em;
+} */
+
+.tree .user__container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  border: 1px solid lightblue;
+  background-color: rgb(24, 24, 21, 0.5);
+  border-radius: 50px;
+  max-width: 200px;
+  overflow: hidden;
+  /* margin: 10px 0; */
+}
+
+.tree .first {
+  margin-left: 5px;
+}
