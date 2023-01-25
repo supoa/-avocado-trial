@@ -19,3 +19,5 @@
     ** This feature are only avaiable for the newly registered users **
 
 -Announcement ,lIVE chat , structure , profile Update
+
+We are excited to inform you that we have recently introduced several new features to our app to enhance your experience.#The first feature is a Reference System , which allows you to refer your friends .This is a great way to introduce others to our app.#The second feature is a Automated Mailing System , which allows you to stay updated on the latest happenings in our app , such as new features , new Registration with your reference, Your Profile Update and so On. This will help you stay informed and make the most of our App.#We Hope You wil enjoy these new features and find them helpful in your experiance with our app. As this is the very first mail we sent you , if you find anything wrong in this new feature or you have any questions or feedback , please don't hasitate to contract us. We will

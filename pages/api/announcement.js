@@ -15,9 +15,11 @@ const handler = nc();
 handler.get(async (req, res) => {
   try {
     await db.connect();
-    const notice = await Announcement.find().sort({ _id: -1 }).limit(1);
+    let notice = await Announcement.find().sort({ _id: -1 }).limit(1);
     await db.disconnect();
-    return res.status(200).send(notice);
+    // notice = notice[0].content.split("#");
+
+    return res.status(200).send(notice[0]);
   } catch (error) {
     console.log(error);
   }
@@ -30,41 +32,69 @@ handler.post(async (req, res) => {
     const newNotice = await new Announcement({
       ...req.body,
     });
-    const notice = await newNotice.save();
+    let notice = await newNotice.save();
     let users = await User.find({});
     console.log({ usersCount: users.length });
+
+    const content = notice.content.split("#");
 
     let Failed = [];
     let Success = [];
 
-    var sendMail = function (index) {
-      if (index >= users.length) {
-        return;
-      }
+    // var sendMail = function (index) {
+    //   if (index >= users.length) {
+    //     return;
+    //   }
 
-      var recipient = users[index];
+    //   var recipient = users[index];
 
-      transporter.sendMail(
-        mailOptionForAnnouncement(recipient, notice.content),
-        function (error, info) {
-          if (error) {
-            console.log(error);
-            Failed.push(recipient.email);
-            console.log(Failed);
-          } else {
-            console.log(
-              "Email sent: " + info.response + "to" + " " + recipient.email
-            );
+    //   transporter.sendMail(
+    //     mailOptionForAnnouncement(recipient, content),
+    //     function (error, info) {
+    //       if (error) {
+    //         console.log(error);
+    //         Failed.push(recipient.email);
+    //         console.log(Failed);
+    //       } else {
+    //         console.log(
+    //           "Email sent: " + info.response + "to" + " " + recipient.email
+    //         );
 
-            Success.push(recipient);
-            console.log({ success: Success.length });
-          }
-          sendMail(index + 1);
-        }
-      );
+    //         Success.push(recipient);
+    //         console.log({ success: Success.length });
+    //       }
+
+    //       setTimeout(function () {
+    //         sendMail(index + 1);
+    //       }, 10000);
+    //     }
+    //   );
+    // };
+
+    // sendMail(0);
+
+    const TestRecipient = {
+      name: "Test",
+      email: "sohanur25800@gmail.com",
     };
 
-    sendMail(0);
+    transporter.sendMail(
+      mailOptionForAnnouncement(TestRecipient, content),
+      function (error, info) {
+        if (error) {
+          console.log(error);
+          Failed.push(TestRecipient.email);
+          console.log(Failed);
+        } else {
+          console.log(
+            "Email sent: " + info.response + "to" + " " + recipient.email
+          );
+
+          Success.push(TestRecipient);
+          console.log({ success: Success.length });
+        }
+      }
+    );
 
     res.status(200).send(notice);
   } catch (error) {

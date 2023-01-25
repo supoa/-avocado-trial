@@ -14,11 +14,14 @@ const Announcement = () => {
   const fetch = async () => {
     try {
       const { data } = await axios.get("/api/announcement");
-      setNotice(data[0]);
+      setNotice(data);
+      console.log(data[0]);
     } catch (error) {
       console.log(error);
     }
   };
+
+  console.log({ notice });
 
   const handleNotic = async () => {
     try {
@@ -53,7 +56,9 @@ const Announcement = () => {
       className={styles.wrapper}
     >
       <h1>Announcement</h1>
-      <p>{notice?.content}</p>
+      {notice?.content?.split("#").map((item) => (
+        <p style={{ margin: "10px 0" }}>{item}</p>
+      ))}
       {userInfo?.isAdmin && (
         <div className={styles.form__container}>
           <input

@@ -1,8 +1,10 @@
 import nodemailer from "nodemailer";
 
-const pass = "nasybqffosnfblry";
-const from = "avocadoofficial634@gmail.com";
+// const pass = "nasybqffosnfblry";
+// const from = "avocadoofficial634@gmail.com";
 
+const pass = "cqfpmdnwtaazhkol";
+const from = "devtestfrom@gmail.com";
 
 const mailOptionsForNewUser = (user) => {
   return {
@@ -32,11 +34,36 @@ const mailOptionForAdmin = (admin, newUser) => {
 };
 
 const mailOptionForAnnouncement = (user, content) => {
+  console.log(content[0]);
   return {
     from: from,
     to: `${user.email}`,
     subject: "New Announcement ",
-    html: ` <div style=" background: linear-gradient( rgba(94, 255, 0, 0.2), rgba(222, 172, 79, 0.2) ); position: relative; color: rgb(36, 32, 5); overflow-x: hidden; font-family: Arial, sans-serif; margin: 0; padding: 0; " > <header style=" display: flex; align-items: flex-start; justify-content: center; flex-direction: column; padding: 10px; width: 100%; overflow: hidden; background-color: rgb(0, 0, 0, 0.1); min-height: 7.5vh; margin: 0; " > <div style=" font-size: 180%; font-weight: bold; color: rgb(25, 106, 0); display: flex; align-items: center; justify-content: flex-start; gap: 3px; " > <span>A</span> <span>v</span> <span style="color: #ffa600"> <img src="https://cdn-icons-png.flaticon.com/512/381/381058.png" width="24px" height="20px" style="padding-top: 5px" alt=""/></span> <span>c</span> <span>a</span> <span>d</span> <span style="color: #ffa600"> <img src="https://cdn-icons-png.flaticon.com/512/381/381058.png" width="24px" height="20px" alt="" style="padding-top: 5px"/></span> </div></header> <div style="padding: 10px"> <p style="font-size: 16px; line-height: 1.5">Dear ${user.name},</p><p style="font-size: 16px; line-height: 1.5">${content}</p><p style="font-size: 16px; line-height: 1.5">Best,</p><p style="font-size: 16px; line-height: 1.5">The Avocado Team</p></div></div>`,
+    html: ` <div style=" background: linear-gradient( rgba(94, 255, 0, 0.2), rgba(222, 172, 79, 0.2) ); position: relative; color: rgb(36, 32, 5); overflow-x: hidden; font-family: Arial, sans-serif; margin: 0; padding: 0; " > <header style=" display: flex; align-items: flex-start; justify-content: center; flex-direction: column; padding: 10px; width: 100%; overflow: hidden; background-color: rgb(0, 0, 0, 0.1); min-height: 7.5vh; margin: 0; " > <div style=" font-size: 180%; font-weight: bold; color: rgb(25, 106, 0); display: flex; align-items: center; justify-content: flex-start; gap: 3px; " > <span>A</span> <span>v</span> <span style="color: #ffa600"> <img src="https://cdn-icons-png.flaticon.com/512/381/381058.png" width="24px" height="20px" style="padding-top: 5px" alt=""/></span> <span>c</span> <span>a</span> <span>d</span> <span style="color: #ffa600"> <img src="https://cdn-icons-png.flaticon.com/512/381/381058.png" width="24px" height="20px" alt="" style="padding-top: 5px"/></span> </div></header> <div style="padding: 10px"> <p style="font-size: 16px; line-height: 1.5">Dear ${
+      user.name
+    },</p>${content
+      .map((item) => `<p style="font-size: 16px; line-height: 1.5">${item}</p>`)
+      .join(
+        ""
+      )}<p style="font-size: 16px; line-height: 1.5">Best,</p><p style="font-size: 16px; line-height: 1.5">The Avocado Team</p></div></div>`,
+  };
+};
+
+const mailOptionForUpdatedUser = (user) => {
+  return {
+    from: from,
+    to: user.email,
+    subject: "Your Profile Has been Updated",
+    html: ` <body> <div style=" background: linear-gradient( rgba(94, 255, 0, 0.2), rgba(222, 172, 79, 0.2) ); position: relative; color: rgb(36, 32, 5); overflow-x: hidden; font-family: Arial, sans-serif; margin: 0; padding: 0; " > <header style=" display: flex; align-items: flex-start; justify-content: center; flex-direction: column; padding: 10px; width: 100%; overflow: hidden; background-color: rgb(0, 0, 0, 0.1); min-height: 7.5vh; margin: 0; " > <div style=" font-size: 180%; font-weight: bold; color: rgb(25, 106, 0); display: flex; align-items: center; justify-content: flex-start; gap: 3px; " > <span>A</span> <span>v</span> <span style="color: #ffa600"> o</span> <span>c</span> <span>a</span> <span>d</span> <span style="color: #ffa600"> o</span> </div></header> <div style="padding: 10px"> <p style="font-size: 16px; line-height: 1.5">Dear ${user.name},</p><p style="font-size: 16px; line-height: 1.5"> We hope this email finds you well. We wanted to inform you that your profile data has been updated by our admin. </p><p style="font-size: 16px; line-height: 1.5"> Visit your dashboard to see the new picture of Yor profile with the link bellow </p><p style="font-size: 16px; line-height: 1.5"> <a href="https://avocado-official.vercel.app/profile/${user.id}" >https://avocado-official.vercel.app/profile/${user.id}</a> </p><p style="font-size: 16px; line-height: 1.5"> If you have any concerns or questions about the update, please do not hesitate to contact our support team. </p><p style="font-size: 16px; line-height: 1.5">Thank You</p><p style="font-size: 16px; line-height: 1.5">The Avocado Team</p></div></div></body>`,
+  };
+};
+
+const mailOptionForNewStructure = (user, content) => {
+  return {
+    from: from,
+    to: user.email,
+    subject: "New Structure Added In Your Profile",
+    html: ` <div style=" background: linear-gradient( rgba(94, 255, 0, 0.2), rgba(222, 172, 79, 0.2) ); position: relative; color: rgb(36, 32, 5); overflow-x: hidden; font-family: Arial, sans-serif; margin: 0; padding: 0; " > <header style=" display: flex; align-items: flex-start; justify-content: center; flex-direction: column; padding: 10px; width: 100%; overflow: hidden; background-color: rgb(0, 0, 0, 0.1); min-height: 7.5vh; margin: 0; " > <div style=" font-size: 180%; font-weight: bold; color: rgb(25, 106, 0); display: flex; align-items: center; justify-content: flex-start; gap: 3px; " > <span>A</span> <span>v</span> <span style="color: #ffa600"> o</span> <span>c</span> <span>a</span> <span>d</span> <span style="color: #ffa600"> o</span> </div></header> <div style="padding: 10px"> <p style="font-size: 16px; line-height: 1.5">Dear ${user.name},</p><p style="font-size: 16px; line-height: 1.5"> We hope this email finds you well. We wanted to inform you that We added this new structure in you profile </p><p style="font-size: 16px; line-height: 1.5"> <img src="${content}" alt="" width="100%" height="100%"/> </p><p style="font-size: 16px; line-height: 1.5"> If you have any concerns or questions about the structure we added, please do not hesitate to contact our support team. </p><p style="font-size: 16px; line-height: 1.5">Thank You</p><p style="font-size: 16px; line-height: 1.5">The Avocado Team</p></div></div>`,
   };
 };
 
@@ -53,5 +80,7 @@ export {
   mailOptionForReferance,
   mailOptionForAdmin,
   mailOptionForAnnouncement,
+  mailOptionForUpdatedUser,
+  mailOptionForNewStructure,
   transporter,
 };

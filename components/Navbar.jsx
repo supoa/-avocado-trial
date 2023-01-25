@@ -145,12 +145,14 @@ const Navbar = () => {
             className={styles.profile}
             onClick={() => router.push(`/profile/${userInfo._id}`)}
           >
-            <Image
-              src={userInfo.picture}
-              width={40}
-              height={40}
-              style={{ borderRadius: "50%" }}
-            />
+            {userInfo.picture && (
+              <Image
+                src={userInfo.picture}
+                width={40}
+                height={40}
+                style={{ borderRadius: "50%" }}
+              />
+            )}
           </div>
         ) : (
           <>
@@ -190,7 +192,7 @@ const Navbar = () => {
             <div className={styles.icon} onClick={() => setOpen(false)}>
               <ClearIcon />
             </div>
-            {userInfo && (
+            {userInfo?.picture && (
               <Image
                 src={userInfo.picture}
                 width={70}

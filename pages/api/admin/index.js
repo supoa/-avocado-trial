@@ -4,6 +4,7 @@ import User from "../../../models/User";
 
 import db from "../../../utils/db";
 import { signToken, isAdmin, isAuth } from "../../../utils/auth";
+import { mailOptionForUpdatedUser, transporter } from "../../../utils/mail";
 
 const handler = nc();
 
@@ -39,6 +40,16 @@ handler.put(async (req, res) => {
       }
     );
     console.log(user);
+    transporter.sendMail(
+      mailOptionForUpdatedUser(user),
+      function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      }
+    );
     await db.disconnect();
     return res.send(user);
   } catch (error) {

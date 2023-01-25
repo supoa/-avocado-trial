@@ -5,7 +5,7 @@ import User from "../../../models/User";
 import db from "../../../utils/db";
 import { signToken, isAdmin, isAuth } from "../../../utils/auth";
 import Structure from "../../../models/Post";
-
+import { mailOptionForNewStructure, transporter } from "../../../utils/mail";
 const handler = nc();
 
 handler.use(isAuth);
@@ -54,6 +54,7 @@ handler.put(async (req, res) => {
         }
       );
       console.log(user);
+
       await db.disconnect();
       return res.send(user);
     } else {
@@ -76,6 +77,18 @@ handler.post(async (req, res) => {
       userId: req.query.id,
     });
     const newStructure = await structure.save();
+    const user = await User.findOne({ _id: req.query.id });
+
+    transporter.sendMail(
+      mailOptionForNewStructure(user, newStructure.content),
+      (error, info) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      }
+    );
     res.send(newStructure);
   } catch (error) {
     console.log(error);
