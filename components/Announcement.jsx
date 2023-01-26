@@ -10,7 +10,7 @@ const Announcement = () => {
   const [content, setContent] = useState("");
   const router = useRouter();
   const userInfo = useSelector((state) => state.user.userInfo);
-
+  const [sent, setSent] = useState(0);
   const fetch = async () => {
     try {
       const { data } = await axios.get("/api/announcement");
@@ -25,6 +25,15 @@ const Announcement = () => {
 
   const handleNotic = async () => {
     try {
+      // first get all the users
+      const res = await axios.get("/api/admin/users", {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+
+      const users = res.data;
+
       const { data } = await axios.post(
         "/api/announcement",
         {
@@ -36,8 +45,29 @@ const Announcement = () => {
           },
         }
       );
-      setContent("");
       setNotice(data);
+
+      const handleMultipleWithRec = (index) => {
+        if (index >= users.length) {
+          return;
+        }
+        const user = users[index];
+
+        axios
+          .post("/api/admin/users", {
+            content,
+            name: user.name,
+            email: user.email,
+          })
+          .then((resp) => {
+            setSent((prev) => prev + 1);
+            handleMultipleWithRec(index + 1);
+          });
+      };
+
+      handleMultipleWithRec(0);
+
+      setContent("");
     } catch (error) {
       console.log(error);
     }
@@ -56,6 +86,7 @@ const Announcement = () => {
       className={styles.wrapper}
     >
       <h1>Announcement</h1>
+      {userInfo?.isAdmin && <p>Mail Sent {sent}</p>}
       {notice?.content?.split("#").map((item) => (
         <p style={{ margin: "10px 0" }}>{item}</p>
       ))}

@@ -106,14 +106,17 @@ const ProfileInfo = ({ userInfo }) => {
               </span>
             </div>
           )}
-          <btn
-            onClick={() => {
-              setOpen(true);
-              setFromAdmin(false);
-            }}
-          >
-            Update Profile
-          </btn>
+
+          {userInfo._id == router.query.id && (
+            <btn
+              onClick={() => {
+                setOpen(true);
+                setFromAdmin(false);
+              }}
+            >
+              Update Profile
+            </btn>
+          )}
 
           {userInfo?.isAdmin && (
             <btn

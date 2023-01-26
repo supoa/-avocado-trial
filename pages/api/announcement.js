@@ -73,28 +73,28 @@ handler.post(async (req, res) => {
 
     // sendMail(0);
 
-    const TestRecipient = {
-      name: "Test",
-      email: "sohanur25800@gmail.com",
-    };
+    // const TestRecipient = {
+    //   name: "Test",
+    //   email: "sohanur25800@gmail.com",
+    // };
 
-    transporter.sendMail(
-      mailOptionForAnnouncement(TestRecipient, content),
-      function (error, info) {
-        if (error) {
-          console.log(error);
-          Failed.push(TestRecipient.email);
-          console.log(Failed);
-        } else {
-          console.log(
-            "Email sent: " + info.response + "to" + " " + recipient.email
-          );
+    // transporter.sendMail(
+    //   mailOptionForAnnouncement(TestRecipient, content),
+    //   function (error, info) {
+    //     if (error) {
+    //       console.log(error);
+    //       Failed.push(TestRecipient.email);
+    //       console.log(Failed);
+    //     } else {
+    //       console.log(
+    //         "Email sent: " + info.response + "to" + " " + recipient.email
+    //       );
 
-          Success.push(TestRecipient);
-          console.log({ success: Success.length });
-        }
-      }
-    );
+    //       Success.push(TestRecipient);
+    //       console.log({ success: Success.length });
+    //     }
+    //   }
+    // );
 
     res.status(200).send(notice);
   } catch (error) {
